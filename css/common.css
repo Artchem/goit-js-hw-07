@@ -22,14 +22,3 @@ button {
   padding: 8px 12px;
   cursor: pointer;
 }
-
-li {
-  list-style: none;
-}
-
-.image {
-  display: block;
-  max-width: 500px;
-  height: auto;
-  margin-bottom: 20px;
-}
