@@ -5,19 +5,10 @@ import { galleryItems } from './gallery-items.js';
 
 const galleryRef = document.querySelector('.gallery');
 const markupGallery = makeMarkupFromArray(galleryItems);
-// console.dir(galleryRef);
+
 galleryRef.insertAdjacentHTML('beforeend', markupGallery);
 
 galleryRef.addEventListener('click', onGalleryClick);
-// window.addEventListener('keydown', onClick);
-
-// function onEscapeClick(event) {
-//   //   console.log(event);
-//   if (event.code === 'Escape') {
-//     console.log(event);
-//     // closeModal();
-//   }
-// }
 
 function openModal(option) {
   const instance = basicLightbox.create(`<img src ="${option}" >`);
@@ -27,10 +18,7 @@ function openModal(option) {
   window.addEventListener('keydown', onEscapeClick);
 
   function onEscapeClick(event) {
-    //   console.log(event);
     if (event.code === 'Escape') {
-      //   console.log(event);
-
       instance.close();
       window.removeEventListener('keydown', onEscapeClick);
     }
