@@ -3,6 +3,9 @@ import { galleryItems } from './gallery-items.js';
 
 // console.log(galleryItems);
 
+const galleryRef = document.querySelector('.gallery');
+const markupGallery = makeMarkupFromArray(galleryItems);
+
 function makeMarkupFromArray(gallery) {
   return gallery
     .map(({ preview, original, description }) => {
@@ -21,9 +24,6 @@ function makeMarkupFromArray(gallery) {
     })
     .join('');
 }
-
-const galleryRef = document.querySelector('.gallery');
-const markupGallery = makeMarkupFromArray(galleryItems);
 
 galleryRef.insertAdjacentHTML('beforeend', markupGallery);
 
