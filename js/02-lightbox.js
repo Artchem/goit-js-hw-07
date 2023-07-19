@@ -26,6 +26,6 @@ function makeMarkupFromArray(gallery) {
     .join('');
 }
 
-let gallery = new SimpleLightbox('.gallery a', { captionsData: 'alt' });
+let gallery = new SimpleLightbox('.gallery__link', { captionsData: 'alt' });
 
 gallery.on('show.simplelightbox', function () {});
