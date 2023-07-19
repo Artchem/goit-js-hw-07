@@ -3,41 +3,6 @@ import { galleryItems } from './gallery-items.js';
 
 // console.log(galleryItems);
 
-const galleryRef = document.querySelector('.gallery');
-const markupGallery = makeMarkupFromArray(galleryItems);
-
-galleryRef.insertAdjacentHTML('beforeend', markupGallery);
-
-galleryRef.addEventListener('click', onGalleryClick);
-
-function openModal(option) {
-  const instance = basicLightbox.create(`<img src ="${option}" >`);
-
-  instance.show();
-
-  window.addEventListener('keydown', onEscapeClick);
-
-  function onEscapeClick(event) {
-    if (event.code === 'Escape') {
-      instance.close();
-      window.removeEventListener('keydown', onEscapeClick);
-    }
-  }
-}
-
-function onGalleryClick(event) {
-  event.preventDefault();
-
-  const isGalleryImageEl = event.target.classList.contains('gallery__image');
-  if (!isGalleryImageEl) {
-    return;
-  }
-
-  console.log(event.target.dataset.source);
-
-  openModal(event.target.dataset.source);
-}
-
 function makeMarkupFromArray(gallery) {
   return gallery
     .map(({ preview, original, description }) => {
@@ -55,4 +20,41 @@ function makeMarkupFromArray(gallery) {
     `;
     })
     .join('');
+}
+
+const galleryRef = document.querySelector('.gallery');
+const markupGallery = makeMarkupFromArray(galleryItems);
+
+galleryRef.insertAdjacentHTML('beforeend', markupGallery);
+
+galleryRef.addEventListener('click', onGalleryClick);
+
+function onGalleryClick(event) {
+  event.preventDefault();
+
+  const isGalleryImageEl = event.target.classList.contains('gallery__image');
+  if (!isGalleryImageEl) {
+    return;
+  }
+
+  console.log(event.target.dataset.source);
+
+  openCloseModal(event.target.dataset.source);
+}
+
+function openCloseModal(option) {
+  const instance = basicLightbox.create(
+    `<img src ="${event.target.dataset.source}" >`
+  );
+
+  instance.show();
+
+  window.addEventListener('keydown', onEscapeClick);
+
+  function onEscapeClick(event) {
+    if (event.code === 'Escape') {
+      instance.close();
+      window.removeEventListener('keydown', onEscapeClick);
+    }
+  }
 }
