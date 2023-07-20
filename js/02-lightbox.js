@@ -28,4 +28,4 @@ function makeMarkupFromArray(gallery) {
 
 let gallery = new SimpleLightbox('.gallery__link', { captionsData: 'alt' });
 
-gallery.on('show.simplelightbox', function () {});
+// gallery.on('show.simplelightbox', function () {});
