@@ -44,17 +44,25 @@ function onGalleryClick(event) {
 
 function openCloseModal(option) {
   const instance = basicLightbox.create(
-    `<img src ="${event.target.dataset.source}" >`
+    `<img src ="${event.target.dataset.source}" >`,
+    {
+      onShow: instance => {
+        window.addEventListener('keydown', onEscapeClick);
+      },
+
+      onClose: instance => {
+        window.removeEventListener('keydown', onEscapeClick);
+      },
+    }
   );
 
   instance.show();
 
-  window.addEventListener('keydown', onEscapeClick);
-
   function onEscapeClick(event) {
+    console.log(event.target);
     if (event.code === 'Escape') {
       instance.close();
-      window.removeEventListener('keydown', onEscapeClick);
+      // window.removeEventListener('keydown', onEscapeClick);
     }
   }
 }
